@@ -73,7 +73,7 @@ export default function Awards() {
                 href="https://www.youtube.com/watch?v=vFAXeM1ps5o"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-display font-semibold text-royal-800 bg-marmalade-400 hover:bg-marmalade-300 shadow-lg shadow-marmalade-500/25 transition-all hover:shadow-xl hover:-translate-y-0.5 whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-display font-semibold text-royal-800 bg-marmalade-400 hover:bg-marmalade-300 shadow-lg shadow-marmalade-500/25 transition-all hover:shadow-xl hover:-translate-y-0.5 text-center"
               >
                 {indaba.cta}
                 <ExternalLink size={16} />

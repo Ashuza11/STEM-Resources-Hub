@@ -89,7 +89,7 @@ export default function Hero() {
                 {t.hero.cta}
               </a>
               <a
-                href="https://www.youtube.com/watch?v=vFAXeM1ps5o"
+                href="https://youtu.be/u4ikkqZG4q4"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-display font-semibold text-white border-2 border-white/20 hover:border-marmalade-400/60 backdrop-blur-sm transition-all hover:-translate-y-0.5"
