@@ -3,6 +3,7 @@ export const translations = {
     nav: {
       home: "Home",
       projects: "Projects",
+      pilot: "Pilot",
       awards: "Awards",
       partners: "Partners",
     },
@@ -14,6 +15,7 @@ export const translations = {
       ctaSecondary: "Watch Our Story",
     },
     mission: {
+      hook: "The infrastructure didn't exist.\u00A0We built it.",
       sectionTitle: "Our Deployment Strategy",
       sectionSubtitle:
         "Rooted in Ubuntu: deploy a world-class simulation platform today, build the mother-tongue knowledge infrastructure tomorrow.",
@@ -104,6 +106,23 @@ export const translations = {
     partners: {
       sectionTitle: "Our Partners",
       sectionSubtitle: "Organizations supporting our mission",
+      headline: "The organizations that believed before anyone else.",
+    },
+    pilot: {
+      sectionTitle: "From the Classroom",
+      headline: "First pilots in Bukavu, South Kivu",
+      description:
+        "In 2026, we brought BongoLab into real secondary school classrooms for the first time. Two schools in Bukavu, South Kivu — Le Progrès and La Référence — opened their doors. Teachers engaged deeply, students lit up, and the feedback directly shaped the product.",
+      schools: "Le Progrès & La Référence Secondary Schools · Bukavu, DRC",
+      stats: [
+        { value: "2", label: "Schools" },
+        { value: "Bukavu", label: "South Kivu · DRC" },
+        { value: "2026", label: "First Cohort" },
+      ],
+      nextUp: {
+        label: "Next pilot round",
+        cities: ["Bukavu", "Goma", "Kigali"],
+      },
     },
     footer: {
       tagline:
@@ -119,6 +138,7 @@ export const translations = {
     nav: {
       home: "Accueil",
       projects: "Projets",
+      pilot: "Pilote",
       awards: "Prix",
       partners: "Partenaires",
     },
@@ -130,6 +150,7 @@ export const translations = {
       ctaSecondary: "Regarder notre Histoire",
     },
     mission: {
+      hook: "L'infrastructure n'existait pas.\u00A0Nous l'avons construite.",
       sectionTitle: "Notre Stratégie de Déploiement",
       sectionSubtitle:
         "Ancré dans Ubuntu : déployer une plateforme de simulation de classe mondiale aujourd'hui, construire l'infrastructure de connaissances en langues maternelles demain.",
@@ -221,6 +242,23 @@ export const translations = {
     partners: {
       sectionTitle: "Nos Partenaires",
       sectionSubtitle: "Organisations soutenant notre mission",
+      headline: "Les organisations qui ont cru en nous avant tout le monde.",
+    },
+    pilot: {
+      sectionTitle: "En Classe",
+      headline: "Premiers pilotes à Bukavu, Sud-Kivu",
+      description:
+        "En 2026, nous avons amené BongoLab pour la première fois dans de vraies salles de classe au lycée. Deux écoles de Bukavu, Sud-Kivu — Le Progrès et La Référence — ont ouvert leurs portes. Les enseignants se sont pleinement engagés, les élèves se sont animés, et les retours ont directement façonné le produit.",
+      schools: "Lycées Le Progrès & La Référence · Bukavu, RDC",
+      stats: [
+        { value: "2", label: "Écoles" },
+        { value: "Bukavu", label: "Sud-Kivu · RDC" },
+        { value: "2026", label: "Première Cohorte" },
+      ],
+      nextUp: {
+        label: "Prochain tour de pilotes",
+        cities: ["Bukavu", "Goma", "Kigali"],
+      },
     },
     footer: {
       tagline:

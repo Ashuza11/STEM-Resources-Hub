@@ -31,7 +31,7 @@ function BongoLab({ t }) {
       <motion.div
         whileHover={{ y: -6 }}
         transition={{ type: "spring", stiffness: 300, damping: 22 }}
-        className="relative rounded-2xl bg-white dark:bg-royal-800/50 border border-silver-200 dark:border-royal-700/50 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-royal-500/10 hover:border-royal-300/60 dark:hover:border-royal-500/40"
+        className="relative rounded-2xl bg-white dark:bg-royal-800/70 border border-silver-200 dark:border-royal-600/40 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-royal-500/10 hover:border-royal-300/60 dark:hover:border-royal-400/40"
       >
         <div className="grid lg:grid-cols-2 gap-0">
           {/* Content */}
@@ -93,7 +93,7 @@ function BongoLab({ t }) {
           </div>
 
           {/* Phone Mockup with Video */}
-          <div className="flex items-center justify-center p-8 sm:p-10 lg:p-12 bg-silver-100 dark:bg-royal-800 transition-colors duration-500 group-hover:bg-silver-200/50">
+          <div className="flex items-center justify-center p-8 sm:p-10 lg:p-12 bg-silver-100 dark:bg-royal-900/60 transition-colors duration-500 group-hover:bg-silver-200/50">
             <div className="phone-mockup w-full max-w-[280px]">
               <div className="phone-screen bg-black aspect-[9/16] relative overflow-hidden">
                 <video
@@ -117,7 +117,7 @@ function BongoLab({ t }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.7, delay: 0.15 }}
-        className="mt-6 rounded-2xl bg-gradient-to-br from-royal-50 to-marmalade-50 dark:from-royal-800/80 dark:to-royal-800/40 border border-royal-200/60 dark:border-royal-700/50 p-8 sm:p-10 transition-colors duration-500"
+        className="mt-6 rounded-2xl bg-gradient-to-br from-royal-50 to-marmalade-50 dark:from-royal-800/90 dark:to-marmalade-900/20 border border-royal-200/60 dark:border-marmalade-900/40 p-8 sm:p-10 transition-colors duration-500"
       >
         <div className="flex items-center gap-3 mb-6">
           <motion.div
@@ -176,11 +176,11 @@ function Ntina({ t }) {
       <motion.div
         whileHover={{ y: -6 }}
         transition={{ type: "spring", stiffness: 300, damping: 22 }}
-        className="relative rounded-2xl bg-white dark:bg-royal-800/50 border border-silver-200 dark:border-royal-700/50 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-marmalade-500/10 hover:border-marmalade-300/60 dark:hover:border-marmalade-500/40"
+        className="relative rounded-2xl bg-white dark:bg-royal-800/70 border border-silver-200 dark:border-royal-600/40 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-marmalade-500/10 hover:border-marmalade-300/60 dark:hover:border-marmalade-500/50"
       >
         <div className="grid lg:grid-cols-2 gap-0">
           {/* Phone Mockup */}
-          <div className="flex items-center justify-center p-8 sm:p-10 lg:p-12 bg-marmalade-50 dark:bg-royal-800 order-2 lg:order-1 transition-colors duration-500">
+          <div className="flex items-center justify-center p-8 sm:p-10 lg:p-12 bg-marmalade-50 dark:bg-royal-900/60 order-2 lg:order-1 transition-colors duration-500">
             <div className="phone-mockup w-full max-w-[280px]">
               <div className="phone-screen bg-royal-900 aspect-[9/16] flex flex-col p-5">
                 <div className="text-marmalade-400 font-display font-bold text-lg mb-3">
@@ -286,7 +286,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 sm:py-28 bg-white dark:bg-royal-900 afro-pattern transition-colors duration-500"
+      className="scroll-mt-20 py-20 sm:py-28 bg-white dark:bg-royal-900 afro-pattern transition-colors duration-500"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -294,12 +294,12 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-royal-700 dark:text-white mb-4 transition-colors duration-500">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-royal-700 dark:text-white mb-3 transition-colors duration-500">
             {t.projects.sectionTitle}
           </h2>
-          <p className="text-silver-600 dark:text-silver-300 text-lg max-w-xl mx-auto transition-colors duration-500">
+          <p className="text-silver-500 dark:text-silver-400 text-lg transition-colors duration-500">
             {t.projects.sectionSubtitle}
           </p>
         </motion.div>

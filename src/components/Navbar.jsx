@@ -19,6 +19,7 @@ export default function Navbar() {
   const links = [
     { href: "#home", label: t.nav.home },
     { href: "#projects", label: t.nav.projects },
+    { href: "#pilot", label: t.nav.pilot },
     { href: "#awards", label: t.nav.awards },
     { href: "#partners", label: t.nav.partners },
   ];
@@ -43,7 +44,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {links.map((link) => (
               <a
                 key={link.href}
@@ -90,7 +91,7 @@ export default function Navbar() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`md:hidden p-2 rounded-lg transition-colors duration-300 cursor-pointer ${
+              className={`lg:hidden p-2 rounded-lg transition-colors duration-300 cursor-pointer ${
                 scrolled
                   ? "text-royal-600 dark:text-royal-200 hover:bg-royal-100 dark:hover:bg-royal-700/50"
                   : "text-white hover:bg-white/15"
@@ -110,15 +111,15 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden overflow-hidden bg-white/95 dark:bg-royal-900/95 backdrop-blur-xl border-b border-royal-100 dark:border-royal-700/50"
+            className="lg:hidden overflow-hidden bg-white/97 dark:bg-royal-900/97 backdrop-blur-xl border-b border-royal-100 dark:border-royal-700/50"
           >
-            <div className="px-4 py-3 space-y-1">
+            <div className="px-4 py-2 space-y-0.5">
               {links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2 rounded-lg text-sm font-medium text-royal-600 dark:text-royal-200 hover:bg-royal-50 dark:hover:bg-royal-800 hover:text-marmalade-500 dark:hover:text-marmalade-400 transition-colors"
+                  className="flex items-center px-3 py-3.5 rounded-lg text-sm font-medium text-royal-600 dark:text-royal-200 hover:bg-royal-50 dark:hover:bg-royal-800/70 hover:text-marmalade-500 dark:hover:text-marmalade-400 transition-colors active:bg-royal-100"
                 >
                   {link.label}
                 </a>

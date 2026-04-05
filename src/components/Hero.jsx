@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion } from "motion/react";
-import { ArrowDown, Play, Target, Lightbulb, ChevronRight } from "lucide-react";
+import { ArrowDown, Play, Target, Lightbulb, ChevronRight, Radio, Clock } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 
 export default function Hero() {
@@ -119,117 +119,150 @@ export default function Hero() {
 
       {/* Mission Narrative */}
       <section className="py-20 sm:py-28 bg-silver-50 dark:bg-royal-800/50 relative overflow-hidden transition-colors duration-500">
-        <div className="absolute inset-0 afro-pattern opacity-50" />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
+        <div className="absolute inset-0 afro-pattern-strong" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          {/* Visual hook — shown before the label */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-            className="text-center mb-16"
+            transition={{ duration: 0.65 }}
+            className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight mb-10"
           >
-            <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-royal-700 dark:text-white mb-4 transition-colors duration-500">
+            {(() => {
+              const [line1, line2] = t.mission.hook.split("\u00A0");
+              return (
+                <>
+                  <span className="text-royal-700 dark:text-white transition-colors duration-500">{line1}</span>
+                  {"\u00A0"}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal-500 to-marmalade-500">{line2}</span>
+                </>
+              );
+            })()}
+          </motion.p>
+
+          {/* Left-aligned header */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-14"
+          >
+            <span className="text-xs font-semibold uppercase tracking-widest text-royal-400 dark:text-royal-300 mb-3 block">
               {t.mission.sectionTitle}
-            </h2>
-            <p className="text-silver-600 dark:text-silver-300 text-lg max-w-2xl mx-auto transition-colors duration-500">
+            </span>
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-royal-600 dark:text-silver-200 leading-snug transition-colors duration-500">
               {t.mission.sectionSubtitle}
-            </p>
+            </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            {/* Phase 1: Bongo-Lab */}
+          {/* Timeline */}
+          <div className="relative">
+            {/* Vertical spine */}
+            <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-royal-400 via-marmalade-400 to-transparent hidden sm:block" />
+
+            {/* Phase 1 — LIVE */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              whileHover={{ y: -6 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, y: { type: "spring", stiffness: 300, damping: 22 } }}
-              className="group/phase1 relative rounded-2xl bg-white dark:bg-royal-800/60 border border-royal-200 dark:border-royal-700/50 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-royal-500/10 hover:border-royal-300/70 dark:hover:border-royal-500/50 cursor-default"
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.65 }}
+              className="relative sm:pl-16 mb-6"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-royal-100 dark:bg-royal-700/40 flex items-center justify-center transition-all duration-300 group-hover/phase1:bg-royal-200 dark:group-hover/phase1:bg-royal-600/50 group-hover/phase1:scale-110">
-                  <Target size={22} className="text-royal-500 dark:text-royal-300 transition-transform duration-300 group-hover/phase1:rotate-12" />
-                </div>
-                <span className="font-display font-semibold text-sm text-royal-500 dark:text-royal-300 uppercase tracking-wider">
-                  {t.mission.phase1.label}
-                </span>
+              {/* Spine dot */}
+              <div className="absolute left-[10px] top-7 w-5 h-5 rounded-full bg-white dark:bg-royal-800 border-2 border-royal-500 hidden sm:flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-royal-500" />
               </div>
-              <h3 className="font-display font-bold text-2xl text-royal-700 dark:text-white mb-3 transition-colors duration-500">
-                {t.mission.phase1.title}
-              </h3>
-              <p className="text-silver-600 dark:text-silver-300 leading-relaxed mb-4 transition-colors duration-500">
-                {t.mission.phase1.description}
-              </p>
-              <ul className="space-y-2">
-                {t.mission.phase1.points.map((point, i) => (
-                  <li
-                    key={i}
-                    className="group/item flex items-start gap-2 text-sm text-silver-700 dark:text-silver-300 transition-colors duration-500"
-                  >
-                    <ChevronRight
-                      size={16}
-                      className="text-royal-500 dark:text-royal-400 mt-0.5 shrink-0 transition-transform duration-200 group-hover/item:translate-x-1"
-                    />
-                    {point}
-                  </li>
-                ))}
-              </ul>
+
+              <div className="rounded-2xl bg-white dark:bg-royal-800/70 border-l-4 border-l-royal-500 border border-royal-100 dark:border-royal-700/40 p-7 sm:p-9 shadow-sm">
+                {/* Status + label row */}
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300 text-xs font-bold uppercase tracking-wider">
+                    <Radio size={11} className="animate-pulse" />
+                    Live
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-widest text-royal-400 dark:text-royal-300">
+                    {t.mission.phase1.label}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <h3 className="font-display font-bold text-2xl sm:text-3xl text-royal-700 dark:text-white mb-3 transition-colors duration-500">
+                  {t.mission.phase1.title}
+                </h3>
+                <p className="text-silver-600 dark:text-silver-300 leading-relaxed mb-6 max-w-xl transition-colors duration-500">
+                  {t.mission.phase1.description}
+                </p>
+
+                {/* Points */}
+                <ul className="space-y-2.5">
+                  {t.mission.phase1.points.map((point, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-silver-700 dark:text-silver-300 transition-colors duration-500">
+                      <ChevronRight size={15} className="text-royal-500 dark:text-royal-400 mt-0.5 shrink-0" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
 
-            {/* Phase 2: Ntina */}
+            {/* Connector quote */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              whileHover={{ y: -6 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, y: { type: "spring", stiffness: 300, damping: 22 } }}
-              className="group/phase2 relative rounded-2xl bg-white dark:bg-royal-800/60 border border-marmalade-200 dark:border-marmalade-800/50 p-8 transition-all duration-300 hover:shadow-xl hover:shadow-marmalade-500/10 hover:border-marmalade-300/70 dark:hover:border-marmalade-600/50 cursor-default"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="relative sm:pl-16 my-4"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-marmalade-100 dark:bg-marmalade-900/40 flex items-center justify-center transition-all duration-300 group-hover/phase2:bg-marmalade-200 dark:group-hover/phase2:bg-marmalade-800/60 group-hover/phase2:scale-110">
-                  <Lightbulb size={22} className="text-marmalade-500 dark:text-marmalade-400 transition-transform duration-300 group-hover/phase2:rotate-12" />
-                </div>
-                <span className="font-display font-semibold text-sm text-marmalade-600 dark:text-marmalade-400 uppercase tracking-wider">
-                  {t.mission.phase2.label}
-                </span>
-              </div>
-              <h3 className="font-display font-bold text-2xl text-royal-700 dark:text-white mb-3 transition-colors duration-500">
-                {t.mission.phase2.title}
-              </h3>
-              <p className="text-silver-600 dark:text-silver-300 leading-relaxed mb-4 transition-colors duration-500">
-                {t.mission.phase2.description}
+              <p className="text-sm italic text-silver-400 dark:text-silver-500 pl-1 transition-colors duration-500">
+                {t.mission.connector}
               </p>
-              <ul className="space-y-2">
-                {t.mission.phase2.points.map((point, i) => (
-                  <li
-                    key={i}
-                    className="group/item flex items-start gap-2 text-sm text-silver-700 dark:text-silver-300 transition-colors duration-500"
-                  >
-                    <ChevronRight
-                      size={16}
-                      className="text-marmalade-500 mt-0.5 shrink-0 transition-transform duration-200 group-hover/item:translate-x-1"
-                    />
-                    {point}
-                  </li>
-                ))}
-              </ul>
+            </motion.div>
+
+            {/* Phase 2 — Coming Soon */}
+            <motion.div
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.65, delay: 0.1 }}
+              className="relative sm:pl-16 sm:ml-8"
+            >
+              {/* Spine dot — hollow for future */}
+              <div className="absolute left-[10px] top-7 w-5 h-5 rounded-full bg-silver-50 dark:bg-royal-800/50 border-2 border-dashed border-marmalade-400 hidden sm:block" />
+
+              <div className="rounded-2xl bg-white/60 dark:bg-royal-800/30 border-l-4 border-l-marmalade-300 dark:border-l-marmalade-700 border border-dashed border-marmalade-200 dark:border-marmalade-800/50 p-7 sm:p-9">
+                {/* Status + label row */}
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-marmalade-100 dark:bg-marmalade-900/30 text-marmalade-700 dark:text-marmalade-400 text-xs font-bold uppercase tracking-wider">
+                    <Clock size={11} />
+                    In Development
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-widest text-marmalade-500 dark:text-marmalade-400">
+                    {t.mission.phase2.label}
+                  </span>
+                </div>
+
+                <h3 className="font-display font-bold text-xl sm:text-2xl text-royal-700 dark:text-white mb-3 transition-colors duration-500">
+                  {t.mission.phase2.title}
+                </h3>
+                <p className="text-silver-500 dark:text-silver-400 leading-relaxed mb-5 max-w-xl text-sm transition-colors duration-500">
+                  {t.mission.phase2.description}
+                </p>
+
+                <ul className="space-y-2">
+                  {t.mission.phase2.points.map((point, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-silver-500 dark:text-silver-400 transition-colors duration-500">
+                      <ChevronRight size={15} className="text-marmalade-400 mt-0.5 shrink-0" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           </div>
 
-          {/* Connecting line */}
-          <div className="hidden md:flex justify-center my-6">
-            <div className="w-px h-12 bg-gradient-to-b from-royal-400 to-marmalade-400" />
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center text-silver-500 dark:text-silver-400 text-sm italic max-w-lg mx-auto px-4 mt-8 md:mt-0 transition-colors duration-500"
-          >
-            {t.mission.connector}
-          </motion.p>
         </div>
       </section>
     </>

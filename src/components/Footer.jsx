@@ -23,28 +23,35 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-royal-700 dark:bg-royal-900 border-t border-royal-600/50 dark:border-royal-700/50 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col items-center text-center gap-6">
-          <img
-            src="/stem-rf-logo-whight.png"
-            alt="STEM Resources Hub"
-            className="h-10 w-auto"
-          />
+    <footer className="bg-royal-800 dark:bg-royal-900 border-t border-royal-700/50 transition-colors duration-500">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
 
-          <p className="text-silver-300 text-sm max-w-md">
-            {t.footer.tagline}
-          </p>
+        <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-start">
 
-          <div className="w-48 h-px bg-gradient-to-r from-transparent via-marmalade-500/50 to-transparent" />
+          {/* Left — brand */}
+          <div>
+            <img
+              src="/stem-rf-logo-whight.png"
+              alt="STEM Resources Hub"
+              className="h-9 w-auto mb-5"
+            />
+            <p className="text-silver-400 text-sm leading-relaxed max-w-xs mb-6">
+              {t.footer.tagline}
+            </p>
+            <p className="text-silver-600 text-xs flex items-center gap-1.5">
+              {t.footer.madeWith}{" "}
+              <Heart size={12} className="text-marmalade-500 fill-marmalade-500" />{" "}
+              {t.footer.forAfrica}
+            </p>
+          </div>
 
-          {/* Contact section */}
-          <div className="flex flex-col items-center gap-4">
-            <p className="text-white font-semibold text-sm tracking-wide">
+          {/* Right — contact */}
+          <div className="sm:text-right">
+            <p className="text-white font-display font-semibold text-sm tracking-wide mb-5">
               {t.footer.followMovement}
             </p>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:justify-end mb-5">
               {socials.map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
@@ -52,7 +59,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-full flex items-center justify-center bg-royal-600/50 hover:bg-marmalade-500 text-silver-300 hover:text-white transition-colors duration-200"
+                  className="w-9 h-9 rounded-full flex items-center justify-center bg-royal-700/60 hover:bg-marmalade-500 text-silver-400 hover:text-white transition-colors duration-200"
                 >
                   <Icon size={16} />
                 </a>
@@ -61,26 +68,22 @@ export default function Footer() {
 
             <a
               href={`mailto:${t.footer.contact}`}
-              className="inline-flex items-center gap-2 text-silver-300 hover:text-marmalade-400 text-sm transition-colors duration-200"
+              className="inline-flex items-center gap-2 text-silver-400 hover:text-marmalade-400 text-sm transition-colors duration-200"
             >
               <Mail size={14} />
               {t.footer.contact}
             </a>
           </div>
 
-          <div className="w-48 h-px bg-gradient-to-r from-transparent via-marmalade-500/50 to-transparent" />
+        </div>
 
-          <p className="text-silver-400 text-xs flex items-center gap-1.5">
-            {t.footer.madeWith}{" "}
-            <Heart size={14} className="text-marmalade-500 fill-marmalade-500" />{" "}
-            {t.footer.forAfrica}
-          </p>
-
-          <p className="text-silver-500 text-xs">
-            &copy; {new Date().getFullYear()} STEM Resources Hub.{" "}
-            {t.footer.rights}
+        {/* Bottom rule + copyright */}
+        <div className="mt-10 pt-6 border-t border-royal-700/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+          <p className="text-silver-600 text-xs">
+            &copy; {new Date().getFullYear()} STEM Resources Hub. {t.footer.rights}
           </p>
         </div>
+
       </div>
     </footer>
   );

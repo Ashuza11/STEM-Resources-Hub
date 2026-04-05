@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Award, ExternalLink, Trophy } from "lucide-react";
+import { ExternalLink, MapPin, Calendar } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 
 export default function Awards() {
@@ -9,78 +9,90 @@ export default function Awards() {
   return (
     <section
       id="awards"
-      className="py-20 sm:py-28 bg-silver-50 dark:bg-royal-800/30 transition-colors duration-500"
+      className="scroll-mt-20 py-20 sm:py-28 bg-royal-800 dark:bg-royal-900 relative overflow-hidden transition-colors duration-500"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+      {/* Subtle background texture */}
+      <div className="absolute inset-0 afro-pattern opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-br from-royal-800 via-royal-800 to-royal-900/80 dark:from-royal-900 dark:via-royal-900 dark:to-royal-900" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Overline */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-xs font-semibold uppercase tracking-widest text-marmalade-400 mb-10"
         >
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-royal-700 dark:text-white mb-4 transition-colors duration-500">
-            {t.awards.sectionTitle}
-          </h2>
-          <p className="text-silver-600 dark:text-silver-300 text-lg max-w-xl mx-auto transition-colors duration-500">
-            {t.awards.sectionSubtitle}
-          </p>
-        </motion.div>
+          {t.awards.sectionTitle}
+        </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          whileHover={{ y: -6, scale: 1.01 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, y: { type: "spring", stiffness: 280, damping: 22 }, scale: { type: "spring", stiffness: 280, damping: 22 } }}
-          className="max-w-3xl mx-auto"
-        >
-          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-royal-500 via-royal-600 to-royal-700 p-px transition-all duration-300 hover:shadow-2xl hover:shadow-royal-500/30">
-            <div className="rounded-2xl bg-gradient-to-br from-royal-600/95 to-royal-700/95 backdrop-blur-xl p-8 sm:p-12 text-center">
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", delay: 0.2 }}
-                className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-marmalade-500/20 mb-6"
-              >
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ repeat: Infinity, duration: 2.8, ease: "easeInOut" }}
-                >
-                  <Trophy size={40} className="text-marmalade-400" />
-                </motion.div>
-              </motion.div>
+        {/* Main editorial row */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-              <h3 className="font-display font-bold text-2xl sm:text-3xl text-white mb-3">
+          {/* Left — typographic anchor */}
+          <motion.div
+            initial={{ opacity: 0, x: -32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.65 }}
+          >
+            {/* Pull-quote style headline */}
+            <div className="border-l-4 border-marmalade-500 pl-6 mb-8">
+              <h2 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
                 {indaba.title}
-              </h3>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-marmalade-500/20 text-marmalade-300 font-display font-semibold text-sm mb-6 cursor-default"
-              >
-                <Award size={16} />
-                {indaba.achievement}
-              </motion.div>
-
-              <p className="text-silver-300 text-lg leading-relaxed max-w-lg mx-auto mb-8">
-                {indaba.description}
-              </p>
-
-              <a
-                href="https://www.youtube.com/watch?v=vFAXeM1ps5o"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-display font-semibold text-royal-800 bg-marmalade-400 hover:bg-marmalade-300 shadow-lg shadow-marmalade-500/25 transition-all hover:shadow-xl hover:-translate-y-0.5 text-center"
-              >
-                {indaba.cta}
-                <ExternalLink size={16} />
-              </a>
+              </h2>
             </div>
-          </div>
-        </motion.div>
+
+            {/* Meta — event details */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2 mb-8 text-sm text-silver-400">
+              <span className="inline-flex items-center gap-1.5">
+                <MapPin size={14} className="text-marmalade-500" />
+                Kigali, Rwanda
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar size={14} className="text-marmalade-500" />
+                2025
+              </span>
+            </div>
+
+            {/* Body */}
+            <p className="text-silver-300 text-lg leading-relaxed max-w-md">
+              {indaba.description}
+            </p>
+          </motion.div>
+
+          {/* Right — achievement card */}
+          <motion.div
+            initial={{ opacity: 0, x: 32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.65, delay: 0.1 }}
+            className="lg:pt-4"
+          >
+            {/* Achievement badge — big, proud */}
+            <div className="rounded-2xl bg-white/5 border border-white/10 border-l-2 border-l-marmalade-500 p-8 mb-6">
+              <p className="text-xs uppercase tracking-widest text-silver-500 mb-4">
+                {t.awards.sectionSubtitle}
+              </p>
+              <p className="font-display font-extrabold text-3xl sm:text-4xl text-marmalade-400 leading-tight">
+                {indaba.achievement}
+              </p>
+            </div>
+
+            <a
+              href="https://www.youtube.com/watch?v=vFAXeM1ps5o"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-display font-semibold text-royal-900 bg-marmalade-400 hover:bg-marmalade-300 shadow-lg shadow-marmalade-900/30 transition-all hover:-translate-y-0.5"
+            >
+              {indaba.cta}
+              <ExternalLink size={16} />
+            </a>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

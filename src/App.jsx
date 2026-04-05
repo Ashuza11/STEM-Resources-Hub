@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
+import Pilot from "./components/Pilot";
 import Awards from "./components/Awards";
 import Partners from "./components/Partners";
 import Footer from "./components/Footer";
@@ -12,6 +13,7 @@ export default function App() {
       <main>
         <Hero />
         <Projects />
+        <Pilot />
         <Awards />
         <Partners />
       </main>

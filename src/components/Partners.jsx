@@ -6,75 +6,101 @@ const partners = [
     name: "ARCHIV",
     logo: "/partners/full-logo-archv.png",
     darkInvert: false,
+    role: {
+      en: "Research & archival infrastructure supporting our knowledge base.",
+      fr: "Infrastructure de recherche et d'archivage soutenant notre base de connaissances.",
+    },
   },
   {
     name: "DDC RDC",
     logo: "/partners/DDC RDC-06.png",
     darkInvert: false,
+    role: {
+      en: "On-the-ground distribution network across DRC schools and communities.",
+      fr: "Réseau de distribution terrain dans les écoles et communautés de RDC.",
+    },
   },
   {
     name: "Deep Learning Indaba",
     logo: "/partners/Deep-learning-Indaba.png",
     darkInvert: true,
+    role: {
+      en: "Africa's premier ML community — the stage where our vision was first recognized.",
+      fr: "La première communauté ML d'Afrique — la scène où notre vision a été reconnue.",
+    },
   },
 ];
 
-// 4 copies → animate -50% (= 2 sets) for a perfectly seamless loop
-const loopPartners = [...partners, ...partners, ...partners, ...partners];
-
 export default function Partners() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   return (
     <section
       id="partners"
-      className="py-20 sm:py-28 bg-white dark:bg-royal-900 afro-pattern transition-colors duration-500"
+      className="scroll-mt-20 py-20 sm:py-28 bg-silver-50 dark:bg-royal-800/40 relative overflow-hidden transition-colors duration-500"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 afro-pattern-strong" />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="mb-14"
         >
-          <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-royal-700 dark:text-white mb-4 transition-colors duration-500">
+          <span className="text-xs font-semibold uppercase tracking-widest text-royal-400 dark:text-royal-300 mb-3 block">
             {t.partners.sectionTitle}
+          </span>
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-royal-700 dark:text-white leading-tight transition-colors duration-500">
+            {t.partners.headline}
           </h2>
-          <p className="text-silver-600 dark:text-silver-300 text-lg max-w-xl mx-auto transition-colors duration-500">
-            {t.partners.sectionSubtitle}
-          </p>
         </motion.div>
 
-        {/* Marquee container — clips overflow, fades edges */}
-        <div
-          className="overflow-hidden relative py-4"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
-          }}
-        >
-          <div className="partners-track flex items-center">
-            {loopPartners.map((partner, i) => (
-              <div
-                key={`${partner.name}-${i}`}
-                className="group flex-shrink-0 mx-5 sm:mx-8"
-              >
-                <div className="flex flex-col items-center gap-4 p-6 sm:p-8 rounded-2xl border border-silver-200 dark:border-royal-700/50 bg-silver-50 dark:bg-royal-800/30 hover:border-marmalade-300 dark:hover:border-marmalade-600 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg">
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className={`h-16 sm:h-20 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500 ${
-                      partner.darkInvert ? "dark:brightness-0 dark:invert" : ""
-                    }`}
-                  />
-                </div>
+        {/* Partner cards */}
+        <div className="grid sm:grid-cols-3 gap-px bg-silver-200 dark:bg-royal-700/30 rounded-2xl overflow-hidden border border-silver-200 dark:border-royal-700/30">
+          {partners.map((partner, i) => (
+            <motion.div
+              key={partner.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="group bg-white dark:bg-royal-900 p-8 flex flex-col gap-6 hover:bg-silver-50 dark:hover:bg-royal-800/80 transition-colors duration-300"
+            >
+              {/* Number label */}
+              <span className="font-display font-bold text-4xl text-silver-100 dark:text-royal-700/60 select-none leading-none transition-colors duration-300 group-hover:text-marmalade-100 dark:group-hover:text-marmalade-900/50">
+                0{i + 1}
+              </span>
+
+              {/* Logo */}
+              <div className="h-14 flex items-center">
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className={`h-full w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500 ${
+                    partner.darkInvert ? "dark:brightness-0 dark:invert" : ""
+                  }`}
+                />
               </div>
-            ))}
-          </div>
+
+              {/* Thin rule */}
+              <div className="w-6 h-px bg-marmalade-300 dark:bg-marmalade-700 transition-colors duration-300" />
+
+              {/* Name + role */}
+              <div>
+                <p className="font-display font-semibold text-royal-700 dark:text-white text-sm mb-1.5 transition-colors duration-500">
+                  {partner.name}
+                </p>
+                <p className="text-silver-500 dark:text-silver-400 text-sm leading-relaxed transition-colors duration-500">
+                  {partner.role[lang]}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
       </div>
     </section>
   );
