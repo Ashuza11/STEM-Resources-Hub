@@ -118,7 +118,14 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    setTimeout(() => {
+                      const target = document.querySelector(link.href);
+                      if (target) target.scrollIntoView({ behavior: "smooth" });
+                    }, 320);
+                  }}
                   className="flex items-center px-3 py-3.5 rounded-lg text-sm font-medium text-royal-600 dark:text-royal-200 hover:bg-royal-50 dark:hover:bg-royal-800/70 hover:text-marmalade-500 dark:hover:text-marmalade-400 transition-colors active:bg-royal-100"
                 >
                   {link.label}

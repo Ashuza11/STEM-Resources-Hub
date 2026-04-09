@@ -1,11 +1,17 @@
-import { useRef } from "react";
-import { motion } from "motion/react";
+import { useRef, useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { ArrowDown, Play, Target, Lightbulb, ChevronRight, Radio, Clock } from "lucide-react";
 import { useLang } from "../context/LanguageContext";
 
 export default function Hero() {
   const { t } = useLang();
   const videoRef = useRef(null);
+
+  const { scrollY } = useScroll();
+  const [showScrollHint, setShowScrollHint] = useState(true);
+  useMotionValueEvent(scrollY, "change", (y) => {
+    setShowScrollHint(y < 80);
+  });
 
   return (
     <>
@@ -47,7 +53,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Headline */}
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6">
+            <h1 className="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-6xl text-white leading-tight mb-6">
               {t.hero.headline.split(" ").map((word, i) => (
                 <motion.span
                   key={i}
@@ -70,7 +76,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="max-w-2xl mx-auto text-lg sm:text-xl text-silver-200 leading-relaxed mb-10"
+              className="max-w-3xl mx-auto text-lg sm:text-xl text-silver-200 leading-relaxed mb-10"
             >
               {t.hero.subheadline}
             </motion.p>
@@ -100,21 +106,37 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-            >
-              <ArrowDown size={24} className="text-white/50" />
-            </motion.div>
-          </motion.div>
         </div>
+
+        {/* Scroll indicator — fixed to viewport, fades out once user starts scrolling */}
+        <motion.a
+          href="#projects"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: showScrollHint ? 1 : 0, y: showScrollHint ? 0 : 10 }}
+          transition={{ delay: showScrollHint ? 1.8 : 0, duration: 0.5 }}
+          style={{ pointerEvents: showScrollHint ? "auto" : "none" }}
+          className="fixed bottom-10 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-6 cursor-pointer group"
+          aria-label="Scroll down to explore"
+        >
+          {/* Outer slow ring */}
+          <span className="absolute w-20 h-20 rounded-full border border-white/25 animate-ping [animation-duration:2.4s]" />
+          {/* Inner faster ring */}
+          <span className="absolute w-16 h-16 rounded-full border border-white/20 animate-ping [animation-duration:1.6s] [animation-delay:0.4s]" />
+
+          {/* Bouncing circle button */}
+          <motion.span
+            animate={{ y: [0, 14, 0] }}
+            transition={{ repeat: Infinity, duration: 2.0, ease: "easeInOut" }}
+            className="relative w-13 h-13 w-[52px] h-[52px] rounded-full border-2 border-white/60 group-hover:border-marmalade-400 bg-white/5 backdrop-blur-sm flex items-center justify-center transition-colors duration-300"
+          >
+            <ArrowDown size={24} className="text-white group-hover:text-marmalade-400 transition-colors duration-300" />
+          </motion.span>
+
+          {/* Label */}
+          <span className="text-white/60 text-[11px] font-semibold tracking-widest uppercase group-hover:text-white transition-colors duration-300">
+            Explore
+          </span>
+        </motion.a>
       </section>
 
       {/* Mission Narrative */}

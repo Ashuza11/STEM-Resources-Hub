@@ -7,8 +7,8 @@ const partners = [
     logo: "/partners/full-logo-archv.png",
     darkInvert: false,
     role: {
-      en: "Research & archival infrastructure supporting our knowledge base.",
-      fr: "Infrastructure de recherche et d'archivage soutenant notre base de connaissances.",
+      en: "AI language infrastructure for emerging economies — building the language layer that serves the 5B+ people current models leave behind.",
+      fr: "Infrastructure linguistique IA pour les économies émergentes — construire la couche linguistique pour les 5 milliards+ que les modèles actuels ignorent.",
     },
   },
   {

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Tell Tailwind v4 to use .dark class instead of prefers-color-scheme media query */
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Primary: Royal Blue #28378F — from logo circuit traces */
   --color-royal-50: #eceeff;
@@ -102,20 +105,20 @@ html.dark {
 
 /* ─── African geometric pattern ─── */
 .afro-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2328378f' fill-opacity='0.05'%3E%3Cpath d='M30 0L60 30L30 60L0 30z M30 10L50 30L30 50L10 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2328378f' fill-opacity='0.03'%3E%3Cpath d='M20 0L40 20L20 40L0 20z M20 7L33 20L20 33L7 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 .dark .afro-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f7951e' fill-opacity='0.07'%3E%3Cpath d='M30 0L60 30L30 60L0 30z M30 10L50 30L30 50L10 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f7951e' fill-opacity='0.04'%3E%3Cpath d='M20 0L40 20L20 40L0 20z M20 7L33 20L20 33L7 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* ─── Stronger pattern variant — for Mission & Partners ─── */
 .afro-pattern-strong {
-  background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2328378f' fill-opacity='0.09'%3E%3Cpath d='M36 0L72 36L36 72L0 36z M36 10L62 36L36 62L10 36z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2328378f' fill-opacity='0.05'%3E%3Cpath d='M24 0L48 24L24 48L0 24z M24 7L41 24L24 41L7 24z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 .dark .afro-pattern-strong {
-  background-image: url("data:image/svg+xml,%3Csvg width='72' height='72' viewBox='0 0 72 72' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f7951e' fill-opacity='0.13'%3E%3Cpath d='M36 0L72 36L36 72L0 36z M36 10L62 36L36 62L10 36z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f7951e' fill-opacity='0.08'%3E%3Cpath d='M24 0L48 24L24 48L0 24z M24 7L41 24L24 41L7 24z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* ─── Dark mode section alternation ─── */
